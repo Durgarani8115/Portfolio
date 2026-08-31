@@ -30,14 +30,6 @@ const CONTACT_INFO = [
     copyable: true,
   },
   {
-    id: "contact-phone",
-    icon: "📞",
-    label: "Phone",
-    value: "+91-8115367288",
-    href: "tel:+918115367288",
-    copyable: true,
-  },
-  {
     id: "contact-github",
     icon: "⌥",
     label: "GitHub",

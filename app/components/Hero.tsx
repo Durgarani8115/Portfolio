@@ -30,9 +30,9 @@ const GREETINGS = [
 /* ─── Typewriter Roles Data ──────────────────────────────────────────────── */
 const ROLES = [
   "Full Stack Developer",
-  "React & Next.js Expert",
-  "Node.js Developer",
-  "Cloud & AWS Enthusiast",
+  "React & Next.js Engineer",
+  "AI & SaaS Tools Builder",
+  "System Design & AWS Specialist",
 ];
 
 /* ─── Component ──────────────────────────────────────────────────────────── */
