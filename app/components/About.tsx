@@ -19,7 +19,7 @@ import { useEffect, useRef } from "react";
 
 /* ─── Stats Data ─────────────────────────────────────────────────────────── */
 const STATS = [
-  { value: "3+", label: "Years of\nExperience" },
+  { value: "Strong", label: "Problem\nSolving" },
   { value: "25+", label: "Web Pages\nBuilt" },
   { value: "70+", label: "Reusable\nComponents" },
   { value: "AI & SaaS", label: "Full-Stack\nFocus" },
