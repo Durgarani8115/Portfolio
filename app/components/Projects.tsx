@@ -19,6 +19,7 @@
 "use client"; // Uses IntersectionObserver + hover state
 
 import { useEffect, useRef, useState } from "react";
+import SpotlightCard from "./SpotlightCard";
 
 /* ─── Projects Data ──────────────────────────────────────────────────────── */
 /* Replace these placeholders with your real projects */
@@ -74,166 +75,176 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: "var(--bg-card)",
-        border: `1px solid ${hovered ? project.accentColor + "40" : "var(--border-card)"}`,
-        borderRadius: "var(--radius-lg)",
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        transition: "transform var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium)",
+        transition: "transform var(--transition-medium)",
         transform: hovered ? "translateY(-6px)" : "translateY(0)",
-        boxShadow: hovered
-          ? `0 20px 60px ${project.accentColor}20`
-          : "var(--shadow-card)",
-        position: "relative",
       }}
     >
-      {/* ── Project Visual Header ── */}
-      <div
+      <SpotlightCard
+        spotlightColor={`${project.accentColor}30`}
         style={{
-          height: "180px",
-          background: project.gradient,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "4rem",
-          position: "relative",
-          borderBottom: "1px solid var(--border-subtle)",
-          overflow: "hidden",
-        }}
-      >
-        {/* Background decorative text */}
-        <span
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            fontSize: "8rem",
-            opacity: 0.06,
-            userSelect: "none",
-            transform: "rotate(-10deg)",
-          }}
-        >
-          {project.emoji}
-        </span>
-        {/* Main emoji */}
-        <span style={{ position: "relative", zIndex: 1 }}>{project.emoji}</span>
-
-        {/* Featured Badge */}
-        {project.featured && (
-          <div
-            style={{
-              position: "absolute",
-              top: "0.75rem",
-              right: "0.75rem",
-              padding: "0.25rem 0.7rem",
-              background: "rgba(244, 63, 142, 0.15)",
-              border: "1px solid rgba(244, 63, 142, 0.3)",
-              borderRadius: "var(--radius-full)",
-              fontSize: "0.68rem",
-              fontWeight: 700,
-              color: "var(--accent-primary)",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-            }}
-          >
-            ★ Featured
-          </div>
-        )}
-      </div>
-
-      {/* ── Card Content ── */}
-      <div
-        style={{
-          padding: "1.5rem",
+          background: "var(--bg-card)",
+          border: `1px solid ${hovered ? project.accentColor + "50" : "var(--border-card)"}`,
+          borderRadius: "var(--radius-lg)",
+          padding: 0,
+          boxShadow: hovered
+            ? `0 20px 60px ${project.accentColor}20`
+            : "var(--shadow-card)",
           display: "flex",
           flexDirection: "column",
-          flex: 1,
+          height: "100%",
+          transition: "border-color var(--transition-medium), box-shadow var(--transition-medium)",
         }}
       >
-        {/* Project Title */}
-        <h3
-          style={{
-            fontFamily: "var(--font-heading)",
-            fontSize: "1.2rem",
-            fontWeight: 700,
-            color: "var(--text-primary)",
-            marginBottom: "0.6rem",
-            lineHeight: 1.3,
-          }}
-        >
-          {project.title}
-        </h3>
-
-        {/* Project Description */}
-        <p
-          style={{
-            fontSize: "0.875rem",
-            color: "var(--text-secondary)",
-            lineHeight: 1.7,
-            marginBottom: "1.25rem",
-            flex: 1,
-          }}
-        >
-          {project.description}
-        </p>
-
-        {/* Tech Stack Pills */}
+        {/* ── Project Visual Header ── */}
         <div
           style={{
+            height: "180px",
+            background: project.gradient,
             display: "flex",
-            flexWrap: "wrap",
-            gap: "0.4rem",
-            marginBottom: "1.25rem",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "4rem",
+            position: "relative",
+            borderBottom: "1px solid var(--border-subtle)",
+            overflow: "hidden",
           }}
         >
-          {project.tags.map((tag) => (
-            <span
-              key={tag}
-              style={{
-                padding: "0.2rem 0.65rem",
-                background: `${project.accentColor}10`,
-                border: `1px solid ${project.accentColor}25`,
-                borderRadius: "var(--radius-full)",
-                fontSize: "0.72rem",
-                fontWeight: 500,
-                color: project.accentColor,
-              }}
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Action Links */}
-        <div style={{ display: "flex", gap: "0.75rem" }}>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary"
+          {/* Background decorative text */}
+          <span
+            aria-hidden="true"
             style={{
-              flex: 1,
-              justifyContent: "center",
-              fontSize: "0.8rem",
-              padding: "0.6rem 1rem",
-              background: hovered
-                ? `linear-gradient(135deg, ${project.accentColor}, ${project.accentColor}aa)`
-                : "var(--gradient-accent)",
+              position: "absolute",
+              fontSize: "8rem",
+              opacity: 0.06,
+              userSelect: "none",
+              transform: "rotate(-10deg)",
             }}
           >
-            Live Demo ↗
-          </a>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-            style={{ fontSize: "0.8rem", padding: "0.6rem 1rem" }}
-          >
-            GitHub
-          </a>
+            {project.emoji}
+          </span>
+          {/* Main emoji */}
+          <span style={{ position: "relative", zIndex: 1 }}>{project.emoji}</span>
+
+          {/* Featured Badge */}
+          {project.featured && (
+            <div
+              style={{
+                position: "absolute",
+                top: "0.75rem",
+                right: "0.75rem",
+                padding: "0.25rem 0.7rem",
+                background: "rgba(244, 63, 142, 0.15)",
+                border: "1px solid rgba(244, 63, 142, 0.3)",
+                borderRadius: "var(--radius-full)",
+                fontSize: "0.68rem",
+                fontWeight: 700,
+                color: "var(--accent-primary)",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                zIndex: 2,
+              }}
+            >
+              ★ Featured
+            </div>
+          )}
         </div>
-      </div>
+
+        {/* ── Card Content ── */}
+        <div
+          style={{
+            padding: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+            position: "relative",
+            zIndex: 2,
+          }}
+        >
+          {/* Project Title */}
+          <h3
+            style={{
+              fontFamily: "var(--font-heading)",
+              fontSize: "1.2rem",
+              fontWeight: 700,
+              color: "var(--text-primary)",
+              marginBottom: "0.6rem",
+              lineHeight: 1.3,
+            }}
+          >
+            {project.title}
+          </h3>
+
+          {/* Project Description */}
+          <p
+            style={{
+              fontSize: "0.875rem",
+              color: "var(--text-secondary)",
+              lineHeight: 1.7,
+              marginBottom: "1.25rem",
+              flex: 1,
+            }}
+          >
+            {project.description}
+          </p>
+
+          {/* Tech Stack Pills */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.4rem",
+              marginBottom: "1.25rem",
+            }}
+          >
+            {project.tags.map((tag) => (
+              <span
+                key={tag}
+                style={{
+                  padding: "0.2rem 0.65rem",
+                  background: `${project.accentColor}10`,
+                  border: `1px solid ${project.accentColor}25`,
+                  borderRadius: "var(--radius-full)",
+                  fontSize: "0.72rem",
+                  fontWeight: 500,
+                  color: project.accentColor,
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Action Links */}
+          <div style={{ display: "flex", gap: "0.75rem" }}>
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                fontSize: "0.8rem",
+                padding: "0.6rem 1rem",
+                background: hovered
+                  ? `linear-gradient(135deg, ${project.accentColor}, ${project.accentColor}aa)`
+                  : "var(--gradient-accent)",
+              }}
+            >
+              Live Demo ↗
+            </a>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline"
+              style={{ fontSize: "0.8rem", padding: "0.6rem 1rem" }}
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+      </SpotlightCard>
     </div>
   );
 }

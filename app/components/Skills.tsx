@@ -17,6 +17,7 @@
 "use client"; // Uses IntersectionObserver for scroll animations
 
 import { useEffect, useRef } from "react";
+import SpotlightCard from "./SpotlightCard";
 
 /* ─── Skills Data ────────────────────────────────────────────────────────── */
 /* Each skill has a name, emoji icon, and color for the icon background */
@@ -178,108 +179,119 @@ export default function Skills() {
           }}
         >
           {SKILL_CATEGORIES.map((category, index) => (
-            <div
-              key={category.id}
-              className={`card card--accent reveal reveal-delay-${(index % 4) + 1}`}
-            >
-              {/* Card Header: Icon + Title + Skill Count */}
-              <div
+            <div key={category.id} className={`reveal reveal-delay-${(index % 4) + 1}`}>
+              <SpotlightCard
+                spotlightColor={`${category.iconColor}30`}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.875rem",
-                  marginBottom: "1.25rem",
+                  background: "var(--bg-card)",
+                  border: "1px solid var(--border-card)",
+                  borderRadius: "var(--radius-lg)",
+                  padding: "1.5rem",
                 }}
               >
-                {/* Category Icon */}
+                {/* Card Header: Icon + Title + Skill Count */}
                 <div
                   style={{
-                    width: "44px",
-                    height: "44px",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    background: category.iconBg,
-                    border: `1px solid ${category.iconColor}30`,
-                    borderRadius: "var(--radius-md)",
-                    fontSize: "1.25rem",
-                    flexShrink: 0,
+                    gap: "0.875rem",
+                    marginBottom: "1.25rem",
+                    position: "relative",
+                    zIndex: 2,
                   }}
                 >
-                  {category.icon}
-                </div>
-
-                {/* Title + Count */}
-                <div>
+                  {/* Category Icon */}
                   <div
                     style={{
-                      fontFamily: "var(--font-heading)",
-                      fontSize: "1.1rem",
-                      fontWeight: 700,
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    {category.title}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.75rem",
-                      color: "var(--text-muted)",
-                      marginTop: "0.1rem",
-                    }}
-                  >
-                    {category.skills.length} skills
-                  </div>
-                </div>
-              </div>
-
-              {/* Skill Pills */}
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0.45rem",
-                }}
-              >
-                {category.skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    style={{
+                      width: "44px",
+                      height: "44px",
                       display: "flex",
                       alignItems: "center",
-                      gap: "0.35rem",
-                      padding: "0.3rem 0.7rem",
+                      justifyContent: "center",
                       background: category.iconBg,
-                      border: `1px solid ${category.iconColor}20`,
-                      borderRadius: "var(--radius-full)",
-                      fontSize: "0.78rem",
-                      fontWeight: 500,
-                      color: "var(--text-secondary)",
-                      transition: "all var(--transition-fast)",
-                      cursor: "default",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = `${category.iconColor}60`;
-                      e.currentTarget.style.color = category.iconColor;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = `${category.iconColor}20`;
-                      e.currentTarget.style.color = "var(--text-secondary)";
+                      border: `1px solid ${category.iconColor}30`,
+                      borderRadius: "var(--radius-md)",
+                      fontSize: "1.25rem",
+                      flexShrink: 0,
                     }}
                   >
-                    <span
+                    {category.icon}
+                  </div>
+
+                  {/* Title + Count */}
+                  <div>
+                    <div
                       style={{
-                        fontSize: "0.7rem",
-                        color: category.iconColor,
+                        fontFamily: "var(--font-heading)",
+                        fontSize: "1.1rem",
                         fontWeight: 700,
+                        color: "var(--text-primary)",
                       }}
                     >
-                      {skill.icon}
-                    </span>
-                    {skill.name}
+                      {category.title}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: "0.75rem",
+                        color: "var(--text-muted)",
+                        marginTop: "0.1rem",
+                      }}
+                    >
+                      {category.skills.length} skills
+                    </div>
                   </div>
-                ))}
-              </div>
+                </div>
+
+                {/* Skill Pills */}
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0.45rem",
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {category.skills.map((skill) => (
+                    <div
+                      key={skill.name}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.35rem",
+                        padding: "0.3rem 0.7rem",
+                        background: category.iconBg,
+                        border: `1px solid ${category.iconColor}20`,
+                        borderRadius: "var(--radius-full)",
+                        fontSize: "0.78rem",
+                        fontWeight: 500,
+                        color: "var(--text-secondary)",
+                        transition: "all var(--transition-fast)",
+                        cursor: "default",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = `${category.iconColor}60`;
+                        e.currentTarget.style.color = category.iconColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = `${category.iconColor}20`;
+                        e.currentTarget.style.color = "var(--text-secondary)";
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: "0.7rem",
+                          color: category.iconColor,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {skill.icon}
+                      </span>
+                      {skill.name}
+                    </div>
+                  ))}
+                </div>
+              </SpotlightCard>
             </div>
           ))}
         </div>
