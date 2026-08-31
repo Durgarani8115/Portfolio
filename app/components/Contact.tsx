@@ -25,8 +25,16 @@ const CONTACT_INFO = [
     id: "contact-email-primary",
     icon: "✉",
     label: "Email",
-    value: "durga@example.com",
-    href: "mailto:durga@example.com",
+    value: "durgarani8115@gmail.com",
+    href: "mailto:durgarani8115@gmail.com",
+    copyable: true,
+  },
+  {
+    id: "contact-phone",
+    icon: "📞",
+    label: "Phone",
+    value: "+91-8115367288",
+    href: "tel:+918115367288",
     copyable: true,
   },
   {

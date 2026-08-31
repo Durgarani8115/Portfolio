@@ -42,7 +42,7 @@ const SOCIAL_LINKS = [
     id: "footer-email",
     label: "Email",
     icon: "✉",
-    href: "mailto:durga@example.com",
+    href: "mailto:durgarani8115@gmail.com",
   },
 ];
 

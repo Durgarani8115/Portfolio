@@ -20,9 +20,9 @@ import { useEffect, useRef } from "react";
 /* ─── Stats Data ─────────────────────────────────────────────────────────── */
 const STATS = [
   { value: "3+", label: "Years of\nExperience" },
-  { value: "20+", label: "Projects\nCompleted" },
-  { value: "10+", label: "Tech\nSkills" },
-  { value: "5+", label: "Happy\nClients" },
+  { value: "25+", label: "Web Pages\nBuilt" },
+  { value: "70+", label: "Reusable\nComponents" },
+  { value: "AI & SaaS", label: "Full-Stack\nFocus" },
 ];
 
 /* ─── Quick Links Data ───────────────────────────────────────────────────── */
@@ -45,8 +45,8 @@ const QUICK_LINKS = [
     id: "about-email",
     icon: "@",
     label: "Email",
-    value: "durga@example.com",
-    href: "mailto:durga@example.com",
+    value: "durgarani8115@gmail.com",
+    href: "mailto:durgarani8115@gmail.com",
   },
 ];
 
@@ -102,57 +102,87 @@ export default function About() {
             <p
               className="reveal reveal-delay-1"
               style={{
-                fontSize: "1.1rem",
+                fontSize: "1.15rem",
                 lineHeight: 1.8,
                 color: "var(--text-secondary)",
-                marginBottom: "1.5rem",
+                marginBottom: "1.25rem",
               }}
             >
               Hi, I&apos;m{" "}
-              <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+              <span style={{ color: "var(--text-primary)", fontWeight: 700 }}>
                 Durga Rani
               </span>
-              , a passionate Full Stack Developer with{" "}
-              <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
-                3+ years of experience
-              </span>{" "}
-              building scalable, performant web applications.
+              , a Full-Stack Developer passionate about building modern, scalable,
+              and user-friendly web applications.
             </p>
 
             <p
               className="reveal reveal-delay-2"
               style={{
-                fontSize: "1.05rem",
+                fontSize: "1.025rem",
                 lineHeight: 1.8,
                 color: "var(--text-secondary)",
-                marginBottom: "1.5rem",
+                marginBottom: "1.25rem",
               }}
             >
-              I specialize in the{" "}
-              <span style={{ color: "var(--text-primary)" }}>
-                JavaScript / TypeScript ecosystem
+              I specialize in{" "}
+              <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
+                React, Next.js, JavaScript, Tailwind CSS, Node.js, and REST APIs
               </span>
-              , working across React, Next.js, Node.js, and cloud services like
-              AWS. I love turning complex problems into elegant, user-friendly
-              solutions.
+              , with hands-on experience building responsive websites, reusable UI
+              components, dashboards, and full-stack applications. I also enjoy
+              working with{" "}
+              <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+                AI-powered features and SaaS products
+              </span>
+              , turning ideas into practical and production-ready solutions.
             </p>
 
             <p
               className="reveal reveal-delay-3"
               style={{
-                fontSize: "1.05rem",
+                fontSize: "1.025rem",
                 lineHeight: 1.8,
                 color: "var(--text-secondary)",
-                marginBottom: "2.5rem",
+                marginBottom: "1.75rem",
               }}
             >
-              When I&apos;m not coding, I&apos;m exploring new technologies,
-              contributing to open source, or enjoying a good book. I believe in{" "}
-              <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
-                less talk, more proof
-              </span>
-              .
+              I focus on writing{" "}
+              <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+                clean, reusable, and maintainable code
+              </span>{" "}
+              while creating interfaces that are fast, responsive, and easy to use.
+              I&apos;m always learning new technologies and looking for
+              opportunities to solve real-world problems through software.
             </p>
+
+            {/* ── Highlight Badge Bar ── */}
+            <div
+              className="reveal reveal-delay-3"
+              style={{
+                padding: "0.85rem 1.25rem",
+                background: "var(--gradient-accent-soft)",
+                border: "1px solid var(--border-accent)",
+                borderRadius: "var(--radius-md)",
+                marginBottom: "2rem",
+                fontSize: "0.875rem",
+                fontWeight: 600,
+                color: "var(--text-primary)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                flexWrap: "wrap",
+              }}
+            >
+              <span style={{ color: "var(--accent-primary)" }}>⚡</span>
+              <span>25+ web pages</span>
+              <span style={{ color: "var(--text-muted)" }}>•</span>
+              <span>70+ reusable components</span>
+              <span style={{ color: "var(--text-muted)" }}>•</span>
+              <span style={{ color: "var(--accent-primary)" }}>
+                Full-stack &amp; AI projects
+              </span>
+            </div>
 
             {/* ── Stats Row ── */}
             <div
@@ -177,7 +207,7 @@ export default function About() {
                   <div
                     style={{
                       fontFamily: "var(--font-heading)",
-                      fontSize: "2.25rem",
+                      fontSize: "2.1rem",
                       fontWeight: 800,
                       background: "var(--gradient-accent)",
                       WebkitBackgroundClip: "text",
