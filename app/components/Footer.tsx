@@ -39,6 +39,12 @@ const SOCIAL_LINKS = [
     href: "https://www.linkedin.com/in/durgarani8115/",
   },
   {
+    id: "footer-leetcode",
+    label: "LeetCode",
+    icon: "LC",
+    href: "https://leetcode.com/u/anumodi8115/",
+  },
+  {
     id: "footer-email",
     label: "Email",
     icon: "✉",

@@ -45,6 +45,14 @@ const CONTACT_INFO = [
     href: "https://www.linkedin.com/in/durgarani8115/",
     copyable: false,
   },
+  {
+    id: "contact-leetcode",
+    icon: "LC",
+    label: "LeetCode",
+    value: "leetcode.com/u/anumodi8115",
+    href: "https://leetcode.com/u/anumodi8115/",
+    copyable: false,
+  },
 ];
 
 /* ─── Component ──────────────────────────────────────────────────────────── */
