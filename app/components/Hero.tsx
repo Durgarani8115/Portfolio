@@ -16,6 +16,7 @@
 "use client"; // Interactive: typewriter animation uses state
 
 import { useState, useEffect } from "react";
+import GridScan from "./GridScan";
 
 /* ─── Greeting Cycle Data ────────────────────────────────────────────────── */
 /* Greetings in different languages to cycle through */
@@ -101,6 +102,29 @@ export default function Hero() {
         zIndex: 1,
       }}
     >
+      {/* ── GridScan Animated Background Layer ── */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          opacity: 0.85,
+        }}
+      >
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#2F293A"
+          gridScale={0.1}
+          scanColor="#f43f8e"
+          scanOpacity={0.4}
+          enablePost
+          bloomIntensity={0.4}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
+      </div>
       {/* ── Decorative Background Orbs ── */}
       <div
         aria-hidden="true"
@@ -133,119 +157,131 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Availability Badge (top of hero) ── */}
-      <div
-        style={{ animation: "fadeInUp 0.6s ease both", animationDelay: "0.1s", marginBottom: "2rem" }}
-      >
-        <span className="availability-badge">
-          <span className="availability-dot" />
-          Available for new projects
-        </span>
-      </div>
-
-      {/* ── Greeting (Animated, cycles languages) ── */}
-      <div
-        key={greetingIndex}
-        style={{
-          fontFamily: "var(--font-heading)",
-          fontSize: "clamp(1rem, 3vw, 1.5rem)",
-          fontWeight: 400,
-          color: "var(--text-muted)",
-          marginBottom: "0.75rem",
-          animation: "fadeIn 0.5s ease both",
-          letterSpacing: "0.05em",
-        }}
-      >
-        {GREETINGS[greetingIndex].text}
-      </div>
-
-      {/* ── Main Name Heading ── */}
-      <h1
-        style={{
-          fontFamily: "var(--font-heading)",
-          fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
-          fontWeight: 800,
-          lineHeight: 1.05,
-          letterSpacing: "-0.03em",
-          marginBottom: "1.25rem",
-          animation: "fadeInUp 0.7s ease both",
-          animationDelay: "0.2s",
-          background: "var(--gradient-hero-text)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}
-      >
-        Durga Rani
-      </h1>
-
-      {/* ── Animated Role Title ── */}
+      {/* ── Foreground Content ── */}
       <div
         style={{
-          fontFamily: "var(--font-heading)",
-          fontSize: "clamp(1.25rem, 3vw, 2rem)",
-          fontWeight: 600,
-          color: "var(--text-secondary)",
-          marginBottom: "1.5rem",
-          minHeight: "2.5rem",
+          position: "relative",
+          zIndex: 2,
           display: "flex",
+          flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          gap: "2px",
-          animation: "fadeInUp 0.7s ease both",
-          animationDelay: "0.3s",
+          width: "100%",
         }}
       >
-        {displayedRole}
-        {/* Blinking cursor */}
-        <span
+        {/* ── Availability Badge (top of hero) ── */}
+        <div
+          style={{ animation: "fadeInUp 0.6s ease both", animationDelay: "0.1s", marginBottom: "2rem" }}
+        >
+          <span className="availability-badge">
+            <span className="availability-dot" />
+            Available for new projects
+          </span>
+        </div>
+
+        {/* ── Greeting (Animated, cycles languages) ── */}
+        <div
+          key={greetingIndex}
           style={{
-            display: "inline-block",
-            width: "2px",
-            height: "1.2em",
-            background: "var(--accent-primary)",
-            marginLeft: "2px",
-            verticalAlign: "middle",
-            animation: "blink 1s step-end infinite",
+            fontFamily: "var(--font-heading)",
+            fontSize: "clamp(1rem, 3vw, 1.5rem)",
+            fontWeight: 400,
+            color: "var(--text-muted)",
+            marginBottom: "0.75rem",
+            animation: "fadeIn 0.5s ease both",
+            letterSpacing: "0.05em",
           }}
-        />
-      </div>
+        >
+          {GREETINGS[greetingIndex].text}
+        </div>
 
-      {/* ── Tagline ── */}
-      <p
-        style={{
-          fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
-          color: "var(--text-muted)",
-          maxWidth: "480px",
-          lineHeight: 1.6,
-          marginBottom: "2.5rem",
-          animation: "fadeInUp 0.7s ease both",
-          animationDelay: "0.4s",
-        }}
-      >
-        Less talk.{" "}
-        <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
-          More proof.
-        </span>
-      </p>
+        {/* ── Main Name Heading ── */}
+        <h1
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontSize: "clamp(3.5rem, 9vw, 7.5rem)",
+            fontWeight: 800,
+            lineHeight: 1.05,
+            letterSpacing: "-0.03em",
+            marginBottom: "1.25rem",
+            animation: "fadeInUp 0.7s ease both",
+            animationDelay: "0.2s",
+            background: "var(--gradient-hero-text)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          Durga Rani
+        </h1>
 
-      {/* ── CTA Buttons ── */}
-      <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          animation: "fadeInUp 0.7s ease both",
-          animationDelay: "0.5s",
-        }}
-      >
-        <button id="hero-view-projects" onClick={scrollToProjects} className="btn-primary">
-          View My Work ↗
-        </button>
-        <button id="hero-contact" onClick={scrollToContact} className="btn-outline">
-          Get In Touch
-        </button>
+        {/* ── Animated Role Title ── */}
+        <div
+          style={{
+            fontFamily: "var(--font-heading)",
+            fontSize: "clamp(1.25rem, 3vw, 2rem)",
+            fontWeight: 600,
+            color: "var(--text-secondary)",
+            marginBottom: "1.5rem",
+            minHeight: "2.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "2px",
+            animation: "fadeInUp 0.7s ease both",
+            animationDelay: "0.3s",
+          }}
+        >
+          {displayedRole}
+          {/* Blinking cursor */}
+          <span
+            style={{
+              display: "inline-block",
+              width: "2px",
+              height: "1.2em",
+              background: "var(--accent-primary)",
+              marginLeft: "2px",
+              verticalAlign: "middle",
+              animation: "blink 1s step-end infinite",
+            }}
+          />
+        </div>
+
+        {/* ── Tagline ── */}
+        <p
+          style={{
+            fontSize: "clamp(1rem, 2.5vw, 1.25rem)",
+            color: "var(--text-muted)",
+            maxWidth: "480px",
+            lineHeight: 1.6,
+            marginBottom: "2.5rem",
+            animation: "fadeInUp 0.7s ease both",
+            animationDelay: "0.4s",
+          }}
+        >
+          Less talk.{" "}
+          <span style={{ color: "var(--accent-primary)", fontWeight: 600 }}>
+            More proof.
+          </span>
+        </p>
+
+        {/* ── CTA Buttons ── */}
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            animation: "fadeInUp 0.7s ease both",
+            animationDelay: "0.5s",
+          }}
+        >
+          <button id="hero-view-projects" onClick={scrollToProjects} className="btn-primary">
+            View My Work ↗
+          </button>
+          <button id="hero-contact" onClick={scrollToContact} className="btn-outline">
+            Get In Touch
+          </button>
+        </div>
       </div>
 
       {/* ── Scroll Down Indicator ── */}
